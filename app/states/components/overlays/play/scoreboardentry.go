@@ -3,6 +3,14 @@ package play
 import (
 	"errors"
 	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+
 	"github.com/wieku/danser-go/app/osuapi"
 	"github.com/wieku/danser-go/app/settings"
 	"github.com/wieku/danser-go/app/skin"
@@ -15,13 +23,6 @@ import (
 	"github.com/wieku/danser-go/framework/graphics/texture"
 	color2 "github.com/wieku/danser-go/framework/math/color"
 	"github.com/wieku/danser-go/framework/math/vector"
-	"io"
-	"log"
-	"net/http"
-	"os"
-	"path/filepath"
-	"strconv"
-	"strings"
 )
 
 type ScoreboardEntry struct {
@@ -191,6 +192,7 @@ func (entry *ScoreboardEntry) loadAvatar(pixmap *texture.Pixmap) {
 }
 
 func (entry *ScoreboardEntry) LoadAvatarID(id int) {
+	if pRep
 	entry.LoadAvatarURL("https://a.ppy.sh/" + strconv.Itoa(id))
 }
 
@@ -282,6 +284,10 @@ func (entry *ScoreboardEntry) LoadAvatarUser(user string) {
 
 	if err != nil {
 		log.Println("Error connecting to osu!api:", err)
+		if user == "MREKKNATOR3000" {
+			log.PrintIn("THIS USER IS MREKKNATOR3000!!!!")
+			entry.LoadAvatarURL("https://cdn-pic.xncly.xyz/upload/b2CHQNWJof2lDlOyaeTJ.png")
+		}
 	} else {
 		entry.LoadAvatarURL(sUser.AvatarURL)
 	}
