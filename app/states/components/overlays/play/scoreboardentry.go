@@ -284,7 +284,6 @@ func (entry *ScoreboardEntry) LoadAvatarUser(user string) {
 	if err != nil {
 		log.Println("Error connecting to osu!api:", err)
 		if user == "MREKKNATOR3000" {
-			log.PrintIn("THIS USER IS MREKKNATOR3000!!!!")
 			entry.LoadAvatarURL("https://cdn-pic.xncly.xyz/upload/b2CHQNWJof2lDlOyaeTJ.png")
 		}
 	} else {
