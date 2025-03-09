@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ !failure() && steps.build.conclusion != 'failure' }}
         with:
-          name: danser
+          name: danser-${{ runner.os }}
           path: dist/artifacts/*
 
   build_linux:
@@ -87,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ !failure() && steps.build.conclusion != 'failure' }}
         with:
-          name: danser
+          name: danser-${{ runner.os }}
           path: dist/artifacts/*
 
   publish_release:
@@ -98,11 +98,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Download artifacts
+
+      - name: Download artifacts (Windows)
         uses: actions/download-artifact@v4
         with:
-          name: danser
+          name: danser-Windows
           path: artifacts
+
+      - name: Download artifacts (Linux)
+        uses: actions/download-artifact@v4
+        with:
+          name: danser-Linux
+          path: artifacts
+
       - name: Create release
         id: create_release
         run: |
