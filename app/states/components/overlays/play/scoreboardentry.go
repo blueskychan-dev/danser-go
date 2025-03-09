@@ -192,7 +192,6 @@ func (entry *ScoreboardEntry) loadAvatar(pixmap *texture.Pixmap) {
 }
 
 func (entry *ScoreboardEntry) LoadAvatarID(id int) {
-	if pRep
 	entry.LoadAvatarURL("https://a.ppy.sh/" + strconv.Itoa(id))
 }
 
